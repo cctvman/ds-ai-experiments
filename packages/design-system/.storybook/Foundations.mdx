@@ -1,0 +1,169 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from '@storybook/blocks'
+
+<Meta title="Foundations/Overview" />
+
+# Design System Foundations
+
+This Design System is built with accessibility, consistency, and developer experience in mind.
+
+## Colors
+
+### Brand Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle="Primary brand colors"
+    colors={{
+      50: '#f0f9ff',
+      100: '#e0f2fe',
+      200: '#bae6fd',
+      300: '#7dd3fc',
+      400: '#38bdf8',
+      500: '#0ea5e9',
+      600: '#0284c7',
+      700: '#0369a1',
+      800: '#075985',
+      900: '#0c4a6e',
+    }}
+  />
+  <ColorItem
+    title="Neutral"
+    subtitle="Grayscale colors"
+    colors={{
+      0: '#ffffff',
+      50: '#fafafa',
+      100: '#f5f5f5',
+      200: '#e5e5e5',
+      300: '#d4d4d4',
+      400: '#a3a3a3',
+      500: '#737373',
+      600: '#525252',
+      700: '#404040',
+      800: '#262626',
+      900: '#171717',
+      950: '#0a0a0a',
+    }}
+  />
+</ColorPalette>
+
+### Semantic Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Success"
+    colors={{
+      50: '#f0fdf4',
+      500: '#22c55e',
+      700: '#15803d',
+    }}
+  />
+  <ColorItem
+    title="Error"
+    colors={{
+      50: '#fef2f2',
+      500: '#ef4444',
+      700: '#b91c1c',
+    }}
+  />
+  <ColorItem
+    title="Warning"
+    colors={{
+      50: '#fffbeb',
+      500: '#f59e0b',
+      700: '#b45309',
+    }}
+  />
+  <ColorItem
+    title="Info"
+    colors={{
+      50: '#eff6ff',
+      500: '#3b82f6',
+      700: '#1d4ed8',
+    }}
+  />
+</ColorPalette>
+
+## Typography
+
+<Typeset
+  fontSizes={[12, 14, 16, 18, 20, 24, 30, 36, 48]}
+  fontWeight={400}
+  sampleText="The quick brown fox jumps over the lazy dog"
+  fontFamily="Inter, system-ui, -apple-system, sans-serif"
+/>
+
+### Font Weights
+
+- **Regular**: 400
+- **Medium**: 500
+- **Semibold**: 600
+- **Bold**: 700
+
+### Line Heights
+
+- **Tight**: 1.25
+- **Normal**: 1.5
+- **Relaxed**: 1.75
+
+## Spacing Scale
+
+The spacing scale follows a consistent 4px base unit:
+
+| Token | Value | Pixels |
+|-------|-------|--------|
+| 1     | 0.25rem | 4px   |
+| 2     | 0.5rem  | 8px   |
+| 3     | 0.75rem | 12px  |
+| 4     | 1rem    | 16px  |
+| 5     | 1.25rem | 20px  |
+| 6     | 1.5rem  | 24px  |
+| 8     | 2rem    | 32px  |
+| 10    | 2.5rem  | 40px  |
+| 12    | 3rem    | 48px  |
+| 16    | 4rem    | 64px  |
+
+## Border Radius
+
+| Token | Value    |
+|-------|----------|
+| sm    | 0.25rem  |
+| md    | 0.375rem |
+| lg    | 0.5rem   |
+| xl    | 0.75rem  |
+| 2xl   | 1rem     |
+| full  | 9999px   |
+
+## Shadows
+
+Elevation system using box shadows:
+
+- **sm**: Subtle elevation
+- **md**: Default elevation
+- **lg**: Prominent elevation
+- **xl**: High elevation
+- **2xl**: Maximum elevation
+
+## Accessibility
+
+### WCAG AA Compliance
+
+This design system aims for WCAG AA compliance:
+
+- Color contrast ratios meet minimum 4.5:1 for normal text
+- Color contrast ratios meet minimum 3:1 for large text
+- Interactive elements have visible focus states
+- Semantic HTML and ARIA attributes are used throughout
+
+### Keyboard Navigation
+
+All interactive components support keyboard navigation:
+
+- **Tab**: Navigate between focusable elements
+- **Enter/Space**: Activate buttons and links
+- **Arrow keys**: Navigate within composite components (tables, selects, etc.)
+- **Esc**: Close modals, dropdowns, and popovers
+
+### Screen Reader Support
+
+Components include appropriate ARIA labels and roles to ensure screen reader compatibility.

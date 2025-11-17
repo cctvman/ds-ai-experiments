@@ -1,0 +1,27 @@
+{
+  "theme": {
+    "dark": {
+      "background": {
+        "primary": { "value": "{color.neutral.950}" },
+        "secondary": { "value": "{color.neutral.900}" },
+        "tertiary": { "value": "{color.neutral.800}" }
+      },
+      "text": {
+        "primary": { "value": "{color.neutral.50}" },
+        "secondary": { "value": "{color.neutral.400}" },
+        "tertiary": { "value": "{color.neutral.500}" },
+        "inverse": { "value": "{color.neutral.900}" }
+      },
+      "border": {
+        "default": { "value": "{color.neutral.700}" },
+        "hover": { "value": "{color.neutral.600}" },
+        "focus": { "value": "{color.brand.400}" }
+      },
+      "interactive": {
+        "primary": { "value": "{color.brand.400}" },
+        "primaryHover": { "value": "{color.brand.500}" },
+        "primaryActive": { "value": "{color.brand.600}" }
+      }
+    }
+  }
+}

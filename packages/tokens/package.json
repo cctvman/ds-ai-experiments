@@ -1,0 +1,25 @@
+{
+  "name": "@ds/tokens",
+  "version": "1.0.0",
+  "description": "Design tokens for the design system",
+  "main": "./dist/js/index.js",
+  "module": "./dist/js/index.mjs",
+  "types": "./dist/js/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/js/index.mjs",
+      "require": "./dist/js/index.js",
+      "types": "./dist/js/index.d.ts"
+    },
+    "./css": "./dist/css/variables.css",
+    "./react-native": "./dist/react-native/tokens.js"
+  },
+  "scripts": {
+    "build": "node build-tokens.js && tsc --project tsconfig.build.json",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.9.0",
+    "typescript": "^5.3.3"
+  }
+}
