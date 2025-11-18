@@ -5,7 +5,7 @@ const path = require('path')
 // Custom format for TypeScript
 StyleDictionary.registerFormat({
   name: 'typescript/es6-declarations',
-  formatter: function ({ dictionary }) {
+  format: function ({ dictionary }) {
     const tokens = dictionary.allTokens.reduce((acc, token) => {
       const path = token.path.join('.')
       acc[path] = token.value
@@ -23,7 +23,7 @@ export type Tokens = typeof tokens
 // Custom format for React Native
 StyleDictionary.registerFormat({
   name: 'javascript/react-native',
-  formatter: function ({ dictionary }) {
+  format: function ({ dictionary }) {
     const buildObj = (obj, tokens) => {
       tokens.forEach((token) => {
         const path = token.path
@@ -101,35 +101,43 @@ const buildConfig = {
 
 console.log('🎨 Building design tokens...')
 
-const sd = StyleDictionary.extend(buildConfig)
-sd.buildAllPlatforms()
+// Style Dictionary v4 uses async API
+async function build() {
+  const sd = new StyleDictionary(buildConfig)
+  await sd.buildAllPlatforms()
 
-// Generate Figma tokens (optional)
-const figmaTokens = {}
-sd.allTokens.forEach((token) => {
-  const category = token.path[0]
-  if (!figmaTokens[category]) {
-    figmaTokens[category] = {}
-  }
-  const name = token.path.join('.')
-  figmaTokens[category][name] = {
-    value: token.value,
-    type: token.type || 'other',
-  }
-})
+  // Generate Figma tokens (optional)
+  const figmaTokens = {}
+  sd.allTokens.forEach((token) => {
+    const category = token.path[0]
+    if (!figmaTokens[category]) {
+      figmaTokens[category] = {}
+    }
+    const name = token.path.join('.')
+    figmaTokens[category][name] = {
+      value: token.value,
+      type: token.type || 'other',
+    }
+  })
 
-const figmaPath = path.join(__dirname, 'dist', 'figma')
-if (!fs.existsSync(figmaPath)) {
-  fs.mkdirSync(figmaPath, { recursive: true })
+  const figmaPath = path.join(__dirname, 'dist', 'figma')
+  if (!fs.existsSync(figmaPath)) {
+    fs.mkdirSync(figmaPath, { recursive: true })
+  }
+
+  fs.writeFileSync(
+    path.join(figmaPath, 'tokens.json'),
+    JSON.stringify(figmaTokens, null, 2)
+  )
+
+  console.log('✅ Tokens built successfully!')
+  console.log('   - CSS variables: dist/css/variables.css')
+  console.log('   - JS/TS tokens: dist/js/')
+  console.log('   - React Native: dist/react-native/tokens.js')
+  console.log('   - Figma export: dist/figma/tokens.json')
 }
 
-fs.writeFileSync(
-  path.join(figmaPath, 'tokens.json'),
-  JSON.stringify(figmaTokens, null, 2)
-)
-
-console.log('✅ Tokens built successfully!')
-console.log('   - CSS variables: dist/css/variables.css')
-console.log('   - JS/TS tokens: dist/js/')
-console.log('   - React Native: dist/react-native/tokens.js')
-console.log('   - Figma export: dist/figma/tokens.json')
+build().catch((error) => {
+  console.error('❌ Error building tokens:', error)
+  process.exit(1)
+})

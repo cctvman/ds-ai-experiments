@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react-vite'
 import { globalStyles } from '../src/stitches.config'
 
 // Apply global styles
@@ -14,17 +14,17 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'light',
-      values: [
-        {
+      options: {
+        light: {
           name: 'light',
           value: '#ffffff',
         },
-        {
+
+        dark: {
           name: 'dark',
           value: '#0a0a0a',
-        },
-      ],
+        }
+      }
     },
     a11y: {
       config: {
@@ -37,6 +37,7 @@ const preview: Preview = {
       },
     },
   },
+
   globalTypes: {
     theme: {
       description: 'Global theme for components',
@@ -49,6 +50,12 @@ const preview: Preview = {
       },
     },
   },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'light'
+    }
+  }
 }
 
 export default preview

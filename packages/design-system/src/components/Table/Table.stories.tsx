@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DataTable } from './index'
 import { createColumnHelper } from '@tanstack/react-table'
 
